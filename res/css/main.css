@@ -1,0 +1,29 @@
+html, body {
+    background-color: #343a40;
+}
+
+body {
+    font-family: Arial, serif;
+    background-color: #343a40;
+    color: #EEEEEE;
+}
+
+.description-demo-url {
+    width: 100%;
+    display: block;
+}
+
+.navbar a {
+    font-size: 26px;
+}
+
+.navbar-selected {
+    color: orange !important;
+}
+
+.nav-a {
+    color: rgba(255, 255, 255, 0.5);
+}
+.nav-a:hover {
+    color: rgba(255, 255, 255, 0.75);
+}

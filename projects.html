@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+PROJEKTY
+<div class="row">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="el in apps">
+        <img ng-src="{{el.img_path}}"/>
+        <h2>{{el.name[lang]}}</h2>
+        <p>
+            {{el.description[lang]}}<span class="description-demo-url"><a href="{{el.url_path}}">Demo</a></span>
+        </p>
+    </div>
+</div>
+</body>
+</html>
