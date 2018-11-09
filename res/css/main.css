@@ -27,3 +27,109 @@ body {
 .nav-a:hover {
     color: rgba(255, 255, 255, 0.75);
 }
+
+.bgimg {
+    background-image: url('../../assets/background.jpg');
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+}
+
+#logo {
+    background-image: url('../../assets/logo_orange.png');
+    max-height: 200px;
+    height: 200px;
+    min-height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.project-tile {
+    background-color: #333;
+    border: 2px solid navajowhite;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.col-tile {
+    margin-top: 50px;
+}
+
+#side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 25%;
+}
+
+.side-btn {
+    width: 75px;
+    height: 75px;
+    display: block;
+    font-size: xx-large;
+    border: 2px solid rgba(50, 50, 50, 0.75);
+    background-color: rgba(50, 50, 50, 0.75);
+    color: navajowhite;
+    margin: 10px 15px 10px 0;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.side-btn:hover {
+    width: 85px;
+    height: 85px;
+    margin: 0 5px 5px 0 !important;
+    color: white;
+    background-color: rgba(20, 20, 20, 1);
+}
+
+.side-btn-xs {
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.side-btn-xs:hover {
+    display: inline-block;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-top: -20px !important;
+    width: 95px !important;
+    height: 95px !important;
+}
+
+#main {
+    margin-top: 100px;
+}
+
+#side-vertical {
+    margin-top: -50%;
+}
+
+#logo-dummy {
+    height: 200px;
+    width: 100%;
+}
+
+#side-panel-xs {
+    position: absolute;
+    padding-left: 50%;
+}
+
+#side-vertical-xs {
+    margin-left: -50%;
+}

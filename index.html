@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="res/css/main.css" rel="stylesheet" />
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular/angular-route.js"></script>
@@ -11,38 +12,67 @@
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <title>Tila</title>
 </head>
-<body ng-app="TilaWebApp">
+<body ng-app="TilaWebApp" onresize="resize();">
 <div class="main" ng-controller="MainController">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item" ng-repeat="el in nav">
-                    <a ng-click="changeTab($index)" class="nav-link {{el.selected}}" href="#!{{el.name}}">{{el.title[lang]}}</a>
-                </li>
-            </ul>
-            <span class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle nav-a" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{languages[lang].img}}" /> {{languages[lang].name}}<span class="caret"></span></a>
-                <ul class="dropdown-menu navbar-dark bg-dark">
-                    <li ng-repeat="el in languages"><button type="button" class="btn btn-link nav-a" ng-click="changeLanguage($index)"><img ng-src="{{el.img}}" /> {{el.name}}</button></li>
-                </ul>
-            </span>
+    <div class="bgimg" set-height></div>
+    <div id="logo"></div>
+    <!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">-->
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+            <!--<span class="navbar-toggler-icon"></span>-->
+        <!--</button>-->
+        <!--<div class="navbar-collapse collapse" id="navbarNavDropdown">-->
+            <!--<ul class="navbar-nav mr-auto">-->
+                <!--<li class="nav-item" ng-repeat="el in nav">-->
+                    <!--<a ng-click="changeTab($index)" class="nav-link {{el.selected}}" href="#!{{el.name}}">{{el.title[lang]}}</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <!--<span class="nav-item dropdown">-->
+                <!--<a href="#" class="nav-link dropdown-toggle nav-a" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{languages[lang].img}}" /> {{languages[lang].name}}<span class="caret"></span></a>-->
+                <!--<ul class="dropdown-menu navbar-dark bg-dark">-->
+                    <!--<li ng-repeat="el in languages"><button type="button" class="btn btn-link nav-a" ng-click="changeLanguage($index)"><img ng-src="{{el.img}}" /> {{el.name}}</button></li>-->
+                <!--</ul>-->
+            <!--</span>-->
+        <!--</div>-->
+    <!--</nav>-->
+    <!--<div ng-view></div>-->
+    <div id="logo-dummy"></div>
+    <div id="side-panel-xs" class="d-block d-sm-none">
+        <div id="side-vertical-xs">
+            <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-envelope-open"></i></span></button>
+            <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-globe"></i></span></button>
+            <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-phone"></i></span></button>
         </div>
-    </nav>
-    <div class="container">
-
-        <!--<a href="#!red">Red</a>-->
-        <!--<a href="#!green">Green</a>-->
-        <!--<a href="#!blue">Blue</a>-->
-        <div ng-view></div>
+    </div>
+    <div class="row" style="margin-right: 0; margin-top: 100px;">
+        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-10 col-xs-12">
+            <div class="container">
+                <div id="main">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-tile" ng-repeat="el in apps">
+                            <div class="project-tile">
+                                <img ng-src="{{el.img_path}}"/>
+                                <h2>{{el.name[lang]}}</h2>
+                                <p>{{el.description[lang]}}<span class="description-demo-url"><a href="{{el.url_path}}">Demo</a></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="side-panel" class="d-none d-sm-block">
+            <div id="side-vertical">
+                <button type="button" class="btn side-btn"><span><i class="fa fa-envelope-open"></i></span></button>
+                <button type="button" class="btn side-btn"><span><i class="fa fa-globe"></i></span></button>
+                <button type="button" class="btn side-btn"><span><i class="fa fa-phone"></i></span></button>
+            </div>
+        </div>
     </div>
 
 </div>
 
 <script src="res/js/app.js"></script>
 <script src="res/js/controllers/MainController.js"></script>
+<script></script>
 
 </body>
 </html>
