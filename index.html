@@ -4,75 +4,108 @@
     <meta charset="utf-8">
     <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="res/css/imagehover.css" rel="stylesheet" media="all">
     <link href="res/css/main.css" rel="stylesheet" />
+
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular/angular-route.js"></script>
     <script src="libs/jquery.min.js"></script>
     <script src="libs/popper.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="res/js/starter.js"></script>
+    <script src="res/js/templates.js"></script>
     <title>Tila</title>
+
 </head>
-<body ng-app="TilaWebApp" onresize="resize();">
-<div class="main" ng-controller="MainController">
-    <div class="bgimg" set-height></div>
-    <div id="logo"></div>
-    <!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">-->
-        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-            <!--<span class="navbar-toggler-icon"></span>-->
-        <!--</button>-->
-        <!--<div class="navbar-collapse collapse" id="navbarNavDropdown">-->
-            <!--<ul class="navbar-nav mr-auto">-->
-                <!--<li class="nav-item" ng-repeat="el in nav">-->
-                    <!--<a ng-click="changeTab($index)" class="nav-link {{el.selected}}" href="#!{{el.name}}">{{el.title[lang]}}</a>-->
-                <!--</li>-->
-            <!--</ul>-->
-            <!--<span class="nav-item dropdown">-->
-                <!--<a href="#" class="nav-link dropdown-toggle nav-a" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img ng-src="{{languages[lang].img}}" /> {{languages[lang].name}}<span class="caret"></span></a>-->
-                <!--<ul class="dropdown-menu navbar-dark bg-dark">-->
-                    <!--<li ng-repeat="el in languages"><button type="button" class="btn btn-link nav-a" ng-click="changeLanguage($index)"><img ng-src="{{el.img}}" /> {{el.name}}</button></li>-->
-                <!--</ul>-->
-            <!--</span>-->
-        <!--</div>-->
-    <!--</nav>-->
-    <!--<div ng-view></div>-->
-    <div id="logo-dummy"></div>
-    <div id="side-panel-xs" class="d-block d-sm-none">
-        <div id="side-vertical-xs">
-            <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-envelope-open"></i></span></button>
-            <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-globe"></i></span></button>
-            <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-phone"></i></span></button>
+<body ng-app="TilaWebApp" id="body">
+<div class="main" ng-controller="MainController" style="display: none;">
+    <!--<div id="bgimg"></div>-->
+    <!--<div id="logo"></div>-->
+    <!--<div id="logo-dummy"></div>-->
+
+    <div id="side-panel" class="d-none d-sm-block">
+        <div id="side-vertical">
+            <button type="button" class="btn side-btn"><span><i class="fa fa-envelope-open"></i></span></button>
+            <button type="button" class="btn side-btn"><span><i class="fa fa-phone"></i></span></button>
+            <button type="button" class="btn side-btn" ng-click="changeLanguage();"><span><img class="language-icon" ng-src="{{languages[lang].img}}"></span></button>
         </div>
     </div>
-    <div class="row" style="margin-right: 0; margin-top: 100px;">
-        <div class="col-xl-11 col-lg-11 col-md-11 col-sm-10 col-xs-12">
-            <div class="container">
-                <div id="main">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-tile" ng-repeat="el in apps">
-                            <div class="project-tile">
-                                <img ng-src="{{el.img_path}}"/>
-                                <h2>{{el.name[lang]}}</h2>
-                                <p>{{el.description[lang]}}<span class="description-demo-url"><a href="{{el.url_path}}">Demo</a></span></p>
+    <div class="part" id="first-part">
+        <div id="logo">
+            <img src="assets/logo_orange.png">
+        </div>
+        <div id="side-panel-xs" class="d-block d-sm-none">
+            <div id="side-vertical-xs">
+                <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-envelope-open"></i></span></button>
+                <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-phone"></i></span></button>
+                <button type="button" class="btn side-btn side-btn-xs" ng-click="changeLanguage();"><span><img class="language-icon" ng-src="{{languages[lang].img}}"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="part" id="second-part">
+        <div class="container">
+            <div id="main">
+                <h1>{{texts.projects[lang]}}</h1>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 col-tile" ng-repeat="el in apps">
+                        <div class="project-tile">
+                            <figure class="imghvr-blur tile-img"><img ng-src="{{el.img_path}}" alt="{{el.name[lang]}}" class="tile-img">
+                                <figcaption style="background-color: {{el.color}};">
+                                    <h3>{{el.name[lang]}}</h3>
+                                    <p>{{el.short_description[lang]}}</p>
+                                    <button class="btn btn-default btn-tile" ng-click="changeProject($index)">{{texts.more_info[lang]}}</button>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="col-12" id="project-about">
+                        <h2>{{apps[current_project].name[lang]}}</h2>
+                        <p>{{apps[current_project].description[lang]}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="part" id="third-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div id="about">
+                        <div id="about-image"></div>
+                        <div id="about-text">
+                            <h1>{{texts.about[lang]}}</h1>
+                            <p>{{texts.about_text[lang]}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row" id="people">
+                        <div class="col-lg-6" ng-repeat="el in people">
+                            <div class="people-tile">
+                                <div class="centered-people">
+                                    <img class="rounded-circle centered-circle" ng-src="{{el.img_path}}" alt="{{el.name}}" width="200" height="200">
+                                    <h2 class="centered-text">{{el.name}}</h2>
+                                </div>
+                                <p>{{el.description[lang]}}</p>
+                                <p>
+                                <span ng-repeat="con in el.connect">
+                                    <a class="connect-a" ng-href="{{con.url}}" role="button"><span ng-class="con.icon"></span></a>
+                                </span>
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="side-panel" class="d-none d-sm-block">
-            <div id="side-vertical">
-                <button type="button" class="btn side-btn"><span><i class="fa fa-envelope-open"></i></span></button>
-                <button type="button" class="btn side-btn"><span><i class="fa fa-globe"></i></span></button>
-                <button type="button" class="btn side-btn"><span><i class="fa fa-phone"></i></span></button>
-            </div>
-        </div>
     </div>
-
 </div>
 
 <script src="res/js/app.js"></script>
 <script src="res/js/controllers/MainController.js"></script>
-<script></script>
+<script>$(document).ready(function() {start();});</script>
+
 
 </body>
 </html>
