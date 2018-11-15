@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', function($scope) {
+app.controller('MainController', ['$scope', '$location' ,'anchorSmoothScroll', function($scope, $location, anchorSmoothScroll) {
     $scope.languages = [
         {
             name: "Slovensky",
@@ -11,7 +11,7 @@ app.controller('MainController', ['$scope', function($scope) {
         }
     ];
     $scope.lang = 0;
-    $scope.current_project = 2;
+    $scope.current_project = 0;
     $scope.apps = [
         {
             name: ['Kalendárium', 'Calendarium'],
@@ -60,19 +60,30 @@ app.controller('MainController', ['$scope', function($scope) {
     ];
     $scope.texts = {
         about: ["O nás", "About"],
+        about_nav: ["O nás »", "About »"],
         about_text: [
             "Phasellus nec quam in ante convallis interdum eu vel quam. Nunc vel felis eget massa rhoncus condimentum sed vitae leo. Mauris id orci sapien. Mauris varius justo quis leo accumsan, vitae condimentum justo porta. Ut at massa a risus egestas molestie. Sed libero tortor, suscipit eget laoreet ac, lacinia at.",
             "ENG ABOUT_DESC"
         ],
         projects: ["Projekty", "Projects"],
-        more_info: ["Viac informácií »", "View details »"]
+        projects_nav: ["Projekty »", "Projects »"],
+        more_info: ["Viac informácií »", "View details »"],
+        contact_us: ["Napíšte nám", "Contact us"],
+        contact_us_nav: ["Napíšte nám »", "Contact us »"],
+        enter_email: ["Zadajte kontaktný email", "Enter email"],
+        email_address: ["Kontaktný email", "Email address"],
+        email_help: ["Vašu mailovú adresu nikdy neposkytneme tretím stranám", "We'll never share your email with anyone else."],
+        message: ["Správa", "Message"],
+        name: ["Vaše meno", "Your name"],
+        send_message: ["Odoslať správu", "Send message"],
+        moto: ['"Urobiť nemožné možným"', '"Make impossible possible"'],
     };
 
     $scope.people = [
         {
             name: "Stanislav Krajčovič",
             img_path: "assets/people/krajcovic.png",
-            description: ["SK DESCRIPTION STANISLAV", "EN DESCRIPTION STANISLAV"],
+            description: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique, nibh in molestie suscipit, nunc mi pharetra nulla, accumsan tempus turpis diam scelerisque mi. Quisque felis dolor, venenatis a posuere ac, aliquet sit amet odio. Nunc congue nibh non nisi pulvinar, cursus ullamcorper lectus sagittis. Pellentesque in nisl tempor, bibendum elit elementum, commodo dui. In vel sem ac nulla dictum suscipit. Mauris blandit nisi sit amet elit euismod dapibus. Curabitur magna justo, aliquam vel iaculis finibus, aliquet vitae dolor. Aenean aliquet sapien risus, ac ornare sem viverra sed. Mauris mattis et dui at cursus. Ut ut purus lectus.", "EN DESCRIPTION STANISLAV"],
             connect: [
                 new connectTemplate({type: "github", url: "https://github.com/krajcovic46"}),
                 new connectTemplate({type: "email", url: "stanislav.krajcovic@tila.sk"}),
@@ -81,7 +92,7 @@ app.controller('MainController', ['$scope', function($scope) {
         }, {
             name: "Martin Maco",
             img_path: "assets/people/maco.png",
-            description: ["SK DESCRIPTION MARTIN", "EN DESCRIPTION MARTIN"],
+            description: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet hendrerit velit, quis venenatis sem. Nam a nisl nunc. Nunc sed nunc eu sapien ullamcorper ullamcorper in eget purus. Phasellus non sodales sem. Praesent sagittis ultrices enim, vel vulputate justo rutrum eu. Nulla sagittis mollis risus eu varius. Ut at neque dapibus, varius ex quis, consequat diam. Integer luctus nisi ante, ac placerat eros cursus vitae. Nunc aliquet eget augue vehicula varius.", "EN DESCRIPTION MARTIN"],
             connect: [
                 new connectTemplate({type: "github", url: "https://github.com/tysiote"}),
                 new connectTemplate({type: "email", url: "martin.maco@tila.sk"}),
@@ -106,5 +117,10 @@ app.controller('MainController', ['$scope', function($scope) {
     };
     $scope.changeProject = function(index) {
         $scope.current_project = index;
-    }
+    };
+
+    $scope.scrollTo = function(eID) {
+        // $location.hash('bottom');
+        anchorSmoothScroll.scrollTo(eID);
+    };
 }]);

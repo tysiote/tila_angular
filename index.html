@@ -20,61 +20,86 @@
 </head>
 <body ng-app="TilaWebApp" id="body">
 <div class="main" ng-controller="MainController" style="display: none;">
-    <!--<div id="bgimg"></div>-->
-    <!--<div id="logo"></div>-->
-    <!--<div id="logo-dummy"></div>-->
-
-    <div id="side-panel" class="d-none d-sm-block">
+    <div id="side-panel" class="d-none d-md-block">
         <div id="side-vertical">
-            <button type="button" class="btn side-btn"><span><i class="fa fa-envelope-open"></i></span></button>
-            <button type="button" class="btn side-btn"><span><i class="fa fa-phone"></i></span></button>
+            <!--<button type="button" class="btn side-btn"><span><i class="fa fa-envelope-open"></i></span></button>-->
+            <button type="button" class="btn side-btn" ng-click="scrollTo('fourth-part')"><span><i class="fa fa-phone"></i></span></button>
             <button type="button" class="btn side-btn" ng-click="changeLanguage();"><span><img class="language-icon" ng-src="{{languages[lang].img}}"></span></button>
         </div>
     </div>
     <div class="part" id="first-part">
-        <div id="logo">
-            <img src="assets/logo_orange.png">
-        </div>
-        <div id="side-panel-xs" class="d-block d-sm-none">
-            <div id="side-vertical-xs">
-                <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-envelope-open"></i></span></button>
-                <button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-phone"></i></span></button>
-                <button type="button" class="btn side-btn side-btn-xs" ng-click="changeLanguage();"><span><img class="language-icon" ng-src="{{languages[lang].img}}"></span></button>
-            </div>
-        </div>
-    </div>
-    <div class="part" id="second-part">
-        <div class="container">
-            <div id="main">
-                <h1>{{texts.projects[lang]}}</h1>
+        <div class="inner" id="first-inner">
+            <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 col-tile" ng-repeat="el in apps">
-                        <div class="project-tile">
-                            <figure class="imghvr-blur tile-img"><img ng-src="{{el.img_path}}" alt="{{el.name[lang]}}" class="tile-img">
-                                <figcaption style="background-color: {{el.color}};">
-                                    <h3>{{el.name[lang]}}</h3>
-                                    <p>{{el.short_description[lang]}}</p>
-                                    <button class="btn btn-default btn-tile" ng-click="changeProject($index)">{{texts.more_info[lang]}}</button>
-                                </figcaption>
-                            </figure>
+                    <div class="col-xs-12 col-sm-2 col-md-3 col-lg-4 d-xs-none d-sm-block"></div>
+                    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+                        <img src="assets/logo_orange.png" id="logo">
+                    </div>
+                    <div class="col-xs-12 col-sm-2 col-md-3 col-lg-4 d-xs-none d-sm-block"></div>
+                </div>
+                <div class="row">
+                    <div id="side-panel-xs" class="col-12 d-block d-md-none">
+                        <div id="side-vertical-xs" class="row">
+                            <!--<button type="button" class="btn side-btn side-btn-xs"><span><i class="fa fa-envelope-open"></i></span></button>-->
+                            <div class="col-4"></div>
+                            <div class="col-2">
+                                <button type="button" class="btn side-btn side-btn-xs" ng-click="scrollTo('fourth-part')"><span><i class="fa fa-phone"></i></span></button>
+                            </div>
+                            <div class="col-2">
+                                <button type="button" class="btn side-btn side-btn-xs" ng-click="changeLanguage();"><span><img class="language-icon" ng-src="{{languages[lang].img}}"></span></button>
+                            </div>
+                            <div class="col-4"></div>
                         </div>
                     </div>
-                    <div class="col-12" id="project-about">
-                        <h2>{{apps[current_project].name[lang]}}</h2>
-                        <p>{{apps[current_project].description[lang]}}</p>
+                </div>
+                <div id="tila-nav">
+                    <p>{{texts.moto[lang]}}</p>
+                    <div id="navigation">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4">
+                                <button type="button" class="btn btn-lg nav-btn" ng-click="scrollTo('second-part')">{{texts.projects_nav[lang]}}</button>
+                            </div>
+                            <div class="col-xs-12 col-md-4">
+                                <button type="button" class="btn btn-lg nav-btn" ng-click="scrollTo('third-part')">{{texts.about_nav[lang]}}</button>
+                            </div>
+                            <div class="col-xs-12 col-md-4">
+                                <button type="button" class="btn btn-lg nav-btn" ng-click="scrollTo('fourth-part')">{{texts.contact_us_nav[lang]}}</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="part" id="second-part">
+        <div class="container inner">
+            <h1 class="part-heading">{{texts.projects[lang]}}</h1>
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 col-tile" ng-repeat="el in apps">
+                    <div class="project-tile">
+                        <figure class="imghvr-shutter-in-vert tile-img"><img ng-src="{{el.img_path}}" alt="{{el.name[lang]}}" class="tile-img">
+                            <figcaption style="background-color: {{el.color}};">
+                                <h3>{{el.name[lang]}}</h3>
+                                <p>{{el.short_description[lang]}}</p>
+                                <button class="btn btn-default btn-tile" ng-click="changeProject($index)">{{texts.more_info[lang]}}</button>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-12" id="project-about">
+                    <h2>{{apps[current_project].name[lang]}}</h2>
+                    <p>{{apps[current_project].description[lang]}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="part" id="third-part">
-        <div class="container">
+        <div class="container inner">
+            <h1 class="part-heading">{{texts.about[lang]}}</h1>
             <div class="row">
                 <div class="col-12">
                     <div id="about">
-                        <div id="about-image"></div>
                         <div id="about-text">
-                            <h1>{{texts.about[lang]}}</h1>
                             <p>{{texts.about_text[lang]}}</p>
                         </div>
                     </div>
@@ -82,11 +107,11 @@
                 <div class="col-12">
                     <div class="row" id="people">
                         <div class="col-lg-6" ng-repeat="el in people">
+                            <div class="centered-people">
+                                <img class="rounded-circle centered-circle" ng-src="{{el.img_path}}" alt="{{el.name}}" width="200" height="200">
+                                <h2 class="centered-text">{{el.name}}</h2>
+                            </div>
                             <div class="people-tile">
-                                <div class="centered-people">
-                                    <img class="rounded-circle centered-circle" ng-src="{{el.img_path}}" alt="{{el.name}}" width="200" height="200">
-                                    <h2 class="centered-text">{{el.name}}</h2>
-                                </div>
                                 <p>{{el.description[lang]}}</p>
                                 <p>
                                 <span ng-repeat="con in el.connect">
@@ -96,6 +121,31 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="part" id="fourth-part">
+        <div class="container inner">
+            <h1 class="part-heading">{{texts.contact_us[lang]}}</h1>
+            <div class="row">
+                <div class="col-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="input-email">{{texts.email_address[lang]}}</label>
+                            <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp" placeholder="{{texts.enter_email[lang]}}">
+                            <!--<small id="emailHelp" class="form-text text-muted">{{texts.email_help[lang]}}</small>-->
+                        </div>
+                        <div class="form-group">
+                            <label for="input-name">{{texts.name[lang]}}</label>
+                            <input type="text" class="form-control" id="input-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-textarea">{{texts.message[lang]}}</label>
+                            <textarea class="form-control" id="input-textarea" rows="5"></textarea>
+                        </div>
+                        <button id="btn-send" type="submit" class="btn btn-primary">{{texts.send_message[lang]}}</button>
+                    </form>
                 </div>
             </div>
         </div>

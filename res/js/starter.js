@@ -1,8 +1,11 @@
 function start() {
-    resize();
     $(".main").each((i, v) => {
         $(v).show();
-    })
+    });
+    resize();
+    $(window).on('resize', function(){
+        resize();
+    });
 }
 
 function changeProject(project_name) {
@@ -15,20 +18,31 @@ function changeProject(project_name) {
 }
 
 function resize() {
+    let height = $(window).height();
+    let current_height = 0;
     let $first = $("#first-part");
-    let $second = $("#second-part");
-    let $third = $("#third-part");
-    if ($first.height() < $(window).height()) {
-        $first.css('min-height', ($(window).height() + "px"));
-    } else {
+    $("#side-panel").css("padding-top", ($(window).height()/2) + "px");
+    $("#side-vertical").css("margin-top", (- 132) + "px");
+    [
+        $first,
+        $("#second-part"),
+        $("#third-part"),
+        $("#fourth-part")
+    ].forEach((v) => {
+        if (v.height() < height) {
+            v.css("min-height", height + "px");
+        }
+        let v2 = $(v.find('.inner')[0]);
+        console.log(v.height(), v2.height());
+        if (v2.height() > v.height()) {
+            v.height(v2.height());
+            console.log("changing");
+        }
+        console.log(v.height(), v2.height());
+        v.css("top", current_height + "px");
+        current_height += v.height();
+    });
+    // $("#tila-nav").css("top", ($first.height() * 0.75) + "px");
+    $("#tila-nav").css("padding-top", ($first.height() * 0.4) + "px");
 
-    }
-    if ($second.height() < $(window).height()) {
-        // $second.height($(window).height());
-        $second.css('min-height', ($(window).height() + "px"));
-    }
-    if ($third.height() < $(window).height()) {
-        // $third.height($(window).height());
-        $third.css('min-height', ($(window).height() + "px"));
-    }
 }

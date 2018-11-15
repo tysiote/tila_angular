@@ -6,6 +6,7 @@ body {
     font-family: Arial, serif;
     background-color: #343a40;
     color: navajowhite;
+    overflow: auto;
 }
 
 .description-demo-url {
@@ -28,26 +29,41 @@ body {
 }
 
 .part {
-    position: relative;
+    /*position: relative;*/
     width: 100%;
-    min-height: 100%;
+    /*min-height: 100%;*/
     border-bottom: 2px solid navajowhite;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    background: fixed no-repeat center center;
     background-size: cover;
+    overflow: auto;
+}
+
+.part-heading {
+    font-size: 56px;
+    padding-top: 100px;
 }
 
 #first-part {
-    background: url('../../assets/first-part.jpg') no-repeat center center fixed;
+    background-image: url('../../assets/first-part.jpg');
 }
 
 #second-part {
-    background: url('../../assets/second-part.jpg') no-repeat center center fixed;
+    background-image: url('../../assets/second-part.jpg');
+    color: #333333;
 }
 
 #third-part {
-    background: url('../../assets/third-part.jpg') no-repeat center center fixed;
+    background-image: url('../../assets/third-part.jpg');
+}
+
+#fourth-part {
+    background-image: url('../../assets/fourth-part.jpg');
+    border-bottom: none;
+    font-size: 28px;
 }
 
 .centered-people {
@@ -68,17 +84,24 @@ body {
 
 .people-tile {
     border-radius: 15px;
-    background-color: #dddddd;
-    color: #333;
+    background: inherit;
+    color: #eeeeee;
     padding: 4px;
 }
 
 #logo {
-
+    width: 100%;
+    height: auto;
 }
 
 #project-about {
     margin-top: 50px;
+    font-size: 28px;
+}
+
+#project-about h2 {
+    font-size: 36px;
+    font-weight: bold;
 }
 
 .project-tile {
@@ -99,8 +122,6 @@ body {
 }
 
 .btn-tile {
-    /*background-color: inherit;*/
-    /*color: navajowhite;*/
     color: #333;
     border: 0;
     font-size: 20px;
@@ -127,7 +148,7 @@ body {
     width: 75px;
     height: 75px;
     display: block;
-    font-size: xx-large;
+    font-size: 38px;
     border: 2px solid rgba(50, 50, 50, 0.75);
     background-color: rgba(50, 50, 50, 0.75);
     color: navajowhite;
@@ -143,6 +164,7 @@ body {
     margin: 0 5px 5px 0 !important;
     color: white;
     background-color: rgba(20, 20, 20, 1);
+    font-size: 42px;
 }
 
 .side-btn-xs {
@@ -158,28 +180,21 @@ body {
     margin-top: -20px !important;
     width: 95px !important;
     height: 95px !important;
+    font-size: 42px;
 }
 
-#main {
-    margin-top: 100px;
-}
 
 #side-vertical {
     margin-top: -50%;
 }
 
-#logo-dummy {
-    height: 200px;
-    width: 100%;
-}
-
 #side-panel-xs {
-    position: relative;
-    padding-left: 50%;
+    /*position: relative;*/
+    /*padding-left: 50%;*/
 }
 
 #side-vertical-xs {
-    margin-left: -50%;
+    /*margin-left: -50%;*/
 }
 
 .language-icon {
@@ -189,13 +204,15 @@ body {
 #about {
     margin-top: 40px;
     border-radius: 15px;
-    background-color: #dddddd;
-    color: #333;
+    color: #eeeeee;
     padding: 4px;
+    -webkit-text-stroke-width: thin;
+    -webkit-text-stroke-color: #333333;
 }
 
 #about p {
     font-size: 18px;
+    padding: 4px;
 }
 
 #about h2 {
@@ -214,9 +231,61 @@ body {
 .connect-a {
     font-size: 34px;
     margin-right: 20px;
-    color: #333333;
+    color: #eeeeee;
 }
 
 .connect-a:hover {
-    color: white;
+    color: navajowhite;
+    /*-webkit-text-stroke-width: 1px;*/
+    /*-webkit-text-stroke-color: #333;*/
+}
+
+#tila-nav {
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*left: 0;*/
+}
+
+#tila-nav p {
+    text-align: center;
+    width: 100%;
+    font-size: 50px;
+    font-style: italic;
+}
+
+#navigation {
+
+}
+
+.nav-btn {
+    background-color: inherit;
+    color: navajowhite;
+    width: 100%;
+    font-size: 32px;
+    -webkit-text-stroke-color: #333333;
+    -webkit-text-stroke-width: thin;
+    transition: all .2s ease-in-out;
+}
+
+.nav-btn:hover {
+    color: #eeeeee;
+    /*font-size: 36px;*/
+    transform: scale(1.2);
+}
+
+#emailHelp {
+    color: #eeeeee !important;
+}
+
+#btn-send {
+    color: #eeeeee;
+    background-color: #5f3e0e;
+    border-color: #5f3e0e;
+    width: 300px;
+    font-size: x-large;
+}
+
+#btn-send:hover {
+    background-color: #4e2d0d;
+    border-color: #4e2d0d;
 }
